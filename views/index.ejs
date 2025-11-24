@@ -1,65 +1,42 @@
-<!-- views/index.ejs -->
-<%- include('partials/header', { title: 'Pet Care Manager' }) %>
+<%- include('./partials/header', { title: 'Home' }) %>
 
-<div class="row justify-content-center align-items-center my-5">
+<div class="home-container text-center">
+  <h1 class="main-title">Keep Your Pets <span class="gradient-text">Organized</span></h1>
+  <p class="sub-text">
+    Track vet visits, grooming dates, vaccinations, and important notes for every pet
+    in one simple dashboard. No more digging through screenshots or random notes.
+  </p>
 
-  <!-- Left: hero text + features -->
-  <div class="col-lg-10 text-center">
+  <div class="mt-4 mb-5">
+    <a href="/pets" class="btn main-btn me-2">View My Pets</a>
+    <a href="/pets/new" class="btn outline-btn">Add New Pet</a>
+  </div>
 
-    <h1 class="display-5 fw-semibold mb-3">
-      Keep Your Pets <span style="color: var(--accent);">Organized</span>
-    </h1>
+  <!-- Feature Cards -->
+  <div class="row mt-5 justify-content-center">
 
-    <p class="lead mb-4">
-      Track vet visits, grooming dates, vaccinations, and important notes for every pet
-      in one simple dashboard. No more digging through screenshots or random notes.
-    </p>
-
-    <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
-      <a href="/pets" class="btn btn-primary btn-lg px-4">
-        View My Pets
-      </a>
-      <a href="/pets/new" class="btn btn-outline-light btn-lg px-4">
-        Add New Pet
-      </a>
+    <div class="col-md-3">
+      <div class="feature-card p-4 mb-4">
+        <h5 class="fw-semibold">Add your pets</h5>
+        <p>Name, breed, colour, age, weight, gender — everything stored in one place.</p>
+      </div>
     </div>
 
-    <!-- Feature Cards -->
-    <div class="row g-4 justify-content-center">
-
-      <div class="col-md-3">
-        <div class="section-card text-start">
-          <div class="small text-uppercase mb-2">01</div>
-          <div class="fw-semibold mb-1">Add your pets</div>
-          <div class="small">
-Name, breed, colour, age, weight, gender, everything stored in one place.          </div>
-        </div>
+    <div class="col-md-3">
+      <div class="feature-card p-4 mb-4">
+        <h5 class="fw-semibold">Track health</h5>
+        <p>Vet visits, vaccinations, and appointment dates stay easy to find.</p>
       </div>
+    </div>
 
-      <div class="col-md-3">
-        <div class="section-card text-start">
-          <div class="small text-uppercase mb-2">02</div>
-          <div class="fw-semibold mb-1">Track health</div>
-          <div class="small">
-            Vet visits, vaccinations, and appointment dates stay easy to find.
-          </div>
-        </div>
+    <div class="col-md-3">
+      <div class="feature-card p-4 mb-4">
+        <h5 class="fw-semibold">See it all</h5>
+        <p>Clean table view for fast updates, edits, and reminders.</p>
       </div>
-
-      <div class="col-md-3">
-        <div class="section-card text-start">
-          <div class="small text-uppercase mb-2">03</div>
-          <div class="fw-semibold mb-1">See it all</div>
-          <div class="small">
-            Clean table view for fast updates, edits, and reminders.
-          </div>
-        </div>
-      </div>
-
     </div>
 
   </div>
-
 </div>
 
-<%- include('partials/footer') %>
+<%- include('./partials/footer') %>
