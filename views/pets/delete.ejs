@@ -1,0 +1,17 @@
+<!-- views/pets/delete.ejs -->
+<%- include('../partials/header', { title: 'Delete Pet' }) %>
+
+<div class="alert alert-danger">
+  <h4 class="alert-heading">Delete <%= pet.name %>?</h4>
+  <p>
+    This will remove <strong><%= pet.name %></strong> from your pet list.
+    You can't undo this, so only do it if you're sure.
+  </p>
+  <hr />
+  <form action="/pets/<%= pet._id %>/delete" method="POST" class="d-inline">
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+  </form>
+  <a href="/pets" class="btn btn-secondary ms-2">No, take me back</a>
+</div>
+
+<%- include('../partials/footer') %>

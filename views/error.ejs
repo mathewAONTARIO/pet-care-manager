@@ -1,0 +1,14 @@
+<!-- views/error.ejs -->
+<%- include('partials/header', { title: 'Error' }) %>
+
+<h2 class="mb-3">Something went wrong</h2>
+
+<p><strong><%= message %></strong></p>
+
+<% if (error && error.stack) { %>
+  <pre style="white-space: pre-wrap;"><%= error.stack %></pre>
+<% } %>
+
+<a href="/" class="btn btn-primary mt-3">Go back home</a>
+
+<%- include('partials/footer') %>

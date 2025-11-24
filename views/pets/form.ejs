@@ -1,0 +1,168 @@
+<!-- views/pets/form.ejs -->
+<%- include('../partials/header', { title }) %>
+
+<h2 class="mb-3"><%= title %></h2>
+
+<form action="<%= formAction %>" method="POST" class="row g-3">
+  <!-- Row 1: Name + Species -->
+  <div class="col-md-6">
+    <label class="form-label">Pet Name</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      required
+      value="<%= pet.name || '' %>"
+    />
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Species</label>
+    <input
+      type="text"
+      name="species"
+      class="form-control"
+      placeholder="dog, cat, etc."
+      required
+      value="<%= pet.species || '' %>"
+    />
+  </div>
+
+  <!-- Row 2: Breed + Color + Gender -->
+  <div class="col-md-4">
+    <label class="form-label">Breed</label>
+    <input
+      type="text"
+      name="breed"
+      class="form-control"
+      value="<%= pet.breed || '' %>"
+    />
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Colour</label>
+    <input
+      type="text"
+      name="color"
+      class="form-control"
+      placeholder="e.g. brown & white"
+      value="<%= pet.color || '' %>"
+    />
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Gender</label>
+    <select name="gender" class="form-select">
+      <option value="unknown" <%= !pet.gender || pet.gender === 'unknown' ? 'selected' : '' %>>
+        unknown
+      </option>
+      <option value="male" <%= pet.gender === 'male' ? 'selected' : '' %>>
+        male
+      </option>
+      <option value="female" <%= pet.gender === 'female' ? 'selected' : '' %>>
+        female
+      </option>
+    </select>
+  </div>
+
+  <!-- Row 3: Age + Age Unit + Weight + Weight Unit -->
+  <div class="col-md-3">
+    <label class="form-label">Age</label>
+    <input
+      type="number"
+      name="ageValue"
+      class="form-control"
+      min="0"
+      placeholder="e.g. 2"
+      value="<%= pet.ageValue != null ? pet.ageValue : '' %>"
+    />
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">Age Unit</label>
+    <select name="ageUnit" class="form-select">
+      <option value="years" <%= pet.ageUnit === 'years' || !pet.ageUnit ? 'selected' : '' %>>years</option>
+      <option value="months" <%= pet.ageUnit === 'months' ? 'selected' : '' %>>months</option>
+      <option value="weeks" <%= pet.ageUnit === 'weeks' ? 'selected' : '' %>>weeks</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">Weight</label>
+    <input
+      type="number"
+      name="weightValue"
+      class="form-control"
+      min="0"
+      placeholder="e.g. 6.5"
+      step="0.1"
+      value="<%= pet.weightValue != null ? pet.weightValue : '' %>"
+    />
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">Weight Unit</label>
+    <select name="weightUnit" class="form-select">
+      <option value="kg" <%= pet.weightUnit === 'kg' || !pet.weightUnit ? 'selected' : '' %>>kg</option>
+      <option value="lb" <%= pet.weightUnit === 'lb' ? 'selected' : '' %>>lb</option>
+    </select>
+  </div>
+
+  <!-- Row 4: Vaccination + Vet + Next Appt -->
+  <div class="col-md-4">
+    <label class="form-label">Vaccination Status</label>
+    <select name="vaccinationStatus" class="form-select">
+      <option value="unknown" <%= !pet.vaccinationStatus || pet.vaccinationStatus === 'unknown' ? 'selected' : '' %>>
+        unknown
+      </option>
+      <option value="fully vaccinated" <%= pet.vaccinationStatus === 'fully vaccinated' ? 'selected' : '' %>>
+        fully vaccinated
+      </option>
+      <option value="partially vaccinated" <%= pet.vaccinationStatus === 'partially vaccinated' ? 'selected' : '' %>>
+        partially vaccinated
+      </option>
+      <option value="not vaccinated" <%= pet.vaccinationStatus === 'not vaccinated' ? 'selected' : '' %>>
+        not vaccinated
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Vet Name</label>
+    <input
+      type="text"
+      name="vetName"
+      class="form-control"
+      value="<%= pet.vetName || '' %>"
+    />
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Next Appointment</label>
+    <input
+      type="date"
+      name="nextAppointment"
+      class="form-control"
+      value="<%= pet.nextAppointment ? pet.nextAppointment.toISOString().substring(0,10) : '' %>"
+    />
+  </div>
+
+  <!-- Row 5: Notes -->
+  <div class="col-12">
+    <label class="form-label">Notes</label>
+    <textarea
+      name="notes"
+      class="form-control"
+      rows="3"
+      placeholder="feeding notes, behavior, anything important"
+    ><%= pet.notes || '' %></textarea>
+  </div>
+
+  <!-- Row 6: Buttons -->
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary me-2"><%= submitLabel %></button>
+    <a href="/pets" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+
+<%- include('../partials/footer') %>
